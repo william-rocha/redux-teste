@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 
 const Video = ({ activeModule, activeLesson }) => (<div><strong>modulo: {activeModule.title}</strong><span>lesson: {activeLesson.title}</span></div>);
 
-export default connect(state => ({ activeModule: state.activeModule, activeLesson: state.activeLesson }))(Video);
+export default connect(state => ({ activeModule: state.course.activeModule, activeLesson: state.course.activeLesson }))(Video);
+// export default connect(state => ({ activeModule: state.activeModule, activeLesson: state.activeLesson }))(Video);
 
 
 

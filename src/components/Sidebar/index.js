@@ -1,20 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
+//  add
+import * as CourseActions from '../../store/actions/course'
 
 // import { Container } from './styles';
 
 // por enquanto fazer action aqui
 
-function toggleLesson(module, lesson) {
-    return {
-        type: 'TOGGLE_LESSON',
-        module,
-        lesson,
-    }
-}
+// VAI PARA PASTA ACTIONS
 
-const Sidebar = ({ modules, dispatch }) => <aside>{modules.map(module => (
+// function toggleLesson(module, lesson) {
+//     return {
+//         type: 'TOGGLE_LESSON',
+//         module,
+//         lesson,
+//     }
+// }
+
+const Sidebar = ({ modules, toggleLesson }) => <aside>{modules.map(module => (
     <div>
         <strong>{module.title}</strong>
         <ul>
@@ -23,14 +26,25 @@ const Sidebar = ({ modules, dispatch }) => <aside>{modules.map(module => (
                     {/* add btn */}
                     {console.log('sidebar modulo', module)}
                     {console.log('sidebar lesson', lesson)}
-                    <button onClick={() => dispatch(toggleLesson(module, lesson))} >selecionar</button>
+                    {/*  add */}
+                    <button onClick={() => toggleLesson()} >selecionar</button>
+                    {/* <button onClick={() => dispatch(CourseActions.toggleLesson(module, lesson))} >selecionar</button> */}
                 </li>
             ))}
         </ul>
     </div>
 ))}</aside>
 
-export default connect(state => ({ modules: state.modules }))(Sidebar);
+const mapStateToProps = state => ({
+    modules: state.course.modules
+});
+
+const mapDispatchToProps = dispatch => ({
+    toggleLesson: (module, lesson) => dispatch(CourseActions.toggleLesson(module, lesson))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
+// export default connect(state => ({ modules: state.modules }))(Sidebar);
 // export default connect(state => ({ modules: state }))(Sidebar);
 
 
