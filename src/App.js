@@ -1,24 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Sidebar from './components/Sidebar';
+import Video from './components/Video';
+import { Provider } from 'react-redux';
+import store from './store';
+
 
 function App() {
+  // state = {
+  //   activeLesson: {},
+  //   modules: [
+  //     {
+  //       id: 1, title: 'iniciando', lessons: [
+  //         { id: 1, title: 'primeir aula' },
+  //         { id: 2, title: 'segunda aula' },
+  //       ]
+  //     },
+  //     {
+  //       id: 2, title: 'iniciando redyx', lessons: [
+  //         { id: 3, title: 'primeir aula' },
+  //         { id: 4, title: 'segunda aula' },
+  //       ]
+  //     }
+  //   ]
+  // }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Provider store={store}>
+        {/* <Video activeLesson={this.state.activeLesson}></Video>
+        <Sidebar modules={this.state.modules}></Sidebar> */}
+        <Video ></Video>
+        <Sidebar ></Sidebar>
+      </Provider>
     </div>
   );
 }
