@@ -21,6 +21,8 @@ const Sidebar = ({ modules, dispatch }) => <aside>{modules.map(module => (
             {module.lessons.map(lesson => (
                 <li key={lesson.id}>{lesson.title}
                     {/* add btn */}
+                    {console.log('sidebar modulo', module)}
+                    {console.log('sidebar lesson', lesson)}
                     <button onClick={() => dispatch(toggleLesson(module, lesson))} >selecionar</button>
                 </li>
             ))}
